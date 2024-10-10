@@ -49,7 +49,7 @@ initializr:
           - compatibilityRange: "[3.2.0,3.3.0-M1)"
             version: 3.2.3
           - compatibilityRange: "[3.3.0,3.4.0-M1)"
-            version: 3.3.3
+            version: 3.3.4
       netflix-dgs:
         groupId: com.netflix.graphql.dgs
         artifactId: graphql-dgs-platform-dependencies
@@ -88,7 +88,7 @@ initializr:
         versionProperty: spring-ai.version
         mappings:
           - compatibilityRange: "[3.2.0,3.4.0-M1)"
-            version: 1.0.0-M2
+            version: 1.0.0-M3
             repositories: spring-milestones
       spring-cloud:
         groupId: org.springframework.cloud
@@ -99,7 +99,7 @@ initializr:
           - compatibilityRange: "[3.2.0,3.4.0-M1)"
             version: 2023.0.3
           - compatibilityRange: "[3.4.0-M1,3.5.0-M1)"
-            version: 2024.0.0-M1
+            version: 2024.0.0-M2
             repositories: spring-milestones
       spring-cloud-azure:
         groupId: com.azure.spring
@@ -115,7 +115,7 @@ initializr:
         additionalBoms: [ spring-cloud ]
         mappings:
           - compatibilityRange: "[3.2.0,3.4.0-M1)"
-            version: 5.6.0
+            version: 5.7.0
       spring-cloud-services:
         groupId: io.pivotal.spring.cloud
         artifactId: spring-cloud-services-dependencies
@@ -151,7 +151,7 @@ initializr:
         versionProperty: timefold-solver.version
         mappings:
           - compatibilityRange: "[3.2.0,3.4.0-M1)"
-            version: 1.14.0
+            version: 1.15.0
       vaadin:
         groupId: com.vaadin
         artifactId: vaadin-bom
@@ -159,8 +159,6 @@ initializr:
         mappings:
           - compatibilityRange: "[3.2.0,3.4.0-M1)"
             version: 24.4.13
-    gradle:
-      dependency-management-plugin-version: 1.0.14.RELEASE
     platform:
       compatibilityRange: "3.2.0"
   dependencies:
@@ -808,6 +806,8 @@ initializr:
         - name: WebSocket
           id: websocket
           description: Build Servlet-based WebSocket applications with SockJS and STOMP.
+          facets:
+            - json
           links:
             - rel: guide
               href: https://spring.io/guides/gs/messaging-stomp-websocket/
@@ -824,10 +824,10 @@ initializr:
               href: https://rsocket.io/
         - name: Apache Camel
           id: camel
-          compatibilityRange: "[3.2.0,3.3.0-M1)"
+          compatibilityRange: "[3.2.0,3.4.0-M1)"
           mappings:
-            - compatibilityRange: "[3.2.0,3.3.0-M1)"
-              version: 4.6.0
+            - compatibilityRange: "[3.2.0,3.4.0-M1)"
+              version: 4.8.0
           description: Apache Camel is an open source integration framework that empowers you to quickly and easily integrate various systems consuming or producing data.
           groupId: org.apache.camel.springboot
           artifactId: camel-spring-boot-starter
@@ -1472,13 +1472,8 @@ initializr:
           id: spring-ai-vectordb-cassandra
           group-id: org.springframework.ai
           artifact-id: spring-ai-cassandra-store-spring-boot-starter
-          # spring-ai-cassandra-store-spring-boot-starter is not managed in the BOM
-          # See https://github.com/spring-projects/spring-ai/pull/1312
-          mappings:
-            - compatibilityRange: "[3.2.0,3.4.0-M1)"
-              version: 1.0.0-M2
-              repository: spring-milestones
           description: Spring AI vector database support for Apache Cassandra.
+          bom: spring-ai
           starter: true
           links:
             - rel: reference
